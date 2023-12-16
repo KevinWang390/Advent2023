@@ -6,7 +6,6 @@
 #define DIGIT(x) (x >= 48 && x <= 57)
 #define STAR(x) (x == '*')
 
-// line size is 141 with newline
 const int ESIZE = 141;
 
 void process_num(int* row) {
@@ -63,7 +62,6 @@ int main(int argc, char** argv) {
 
 	if (argc != 2) return 1;
 
-	//read and convert into integer array
 	int answer = 0;
 	int engine[19740];
 	FILE* fp = fopen(argv[1], "r");
@@ -77,11 +75,9 @@ int main(int argc, char** argv) {
 		idx++;
 	} while (c != EOF);
 	fclose(fp);
-	// process numbers
 	for (int row = 0; row < 140; row++) {
 		process_num(&engine[row*ESIZE]);
 	}
-	// process stars
 	for (int row = 0; row < 140; row++) {
 		answer += process_gear(engine, row);
 	}
