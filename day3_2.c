@@ -30,7 +30,7 @@ void process_num(int* row) {
 	}
 }
 
-int process_star(int* engine, int row) {
+int process_gear(int* engine, int row) {
 	int row_sum = 0;
 	for (int i = 0; i < ESIZE; i++) {
 		const int offset = ESIZE * row + i;
@@ -81,19 +81,11 @@ int main(int argc, char** argv) {
 	for (int row = 0; row < 140; row++) {
 		process_num(&engine[row*ESIZE]);
 	}
-	//for (int i = 0; i < 19740; i++) printf("%d\n", engine[i]);
 	// process stars
 	for (int row = 0; row < 140; row++) {
-		int row_sum = process_star(engine, row);
-		answer += row_sum;
-		printf("Row %d total: %d\n", row+1, row_sum);
+		answer += process_gear(engine, row);
 	}
 
 	printf("%d\n", answer);
 	return 0;
 }
-
-//5592350 -- too low
-//9257362 -- too low
-//9253389 -- obviously too low
-//81463996 -- ?
